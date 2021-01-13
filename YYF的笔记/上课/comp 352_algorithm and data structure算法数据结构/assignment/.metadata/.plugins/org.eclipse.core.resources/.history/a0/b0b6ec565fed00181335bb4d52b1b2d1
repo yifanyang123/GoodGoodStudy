@@ -1,0 +1,135 @@
+package assignment3mignong;
+
+public class ArrayListHeapPriorityQueue {
+	private MyArrayList<Job> heap;
+	private int priorityChanges;
+	
+	public ArrayListHeapPriorityQueue() {
+		this.heap = new MyArrayList();
+		this.priorityChanges = 0;
+	}
+	
+	public String toString() {
+		return heap.toString();
+	}
+	
+	private void swap (int p, int q) {
+		Job temp= heap.get(p);
+		heap.set(p,heap.get(q));
+		heap.set(q, temp);
+	}
+   //to make sure root has least final priority
+	private int downHeap(int j) {//heapify会指定一个current值   //set priority是有问题的
+		int parent = j;
+		int left = 2*j+1;
+		int right = 2*j+2;
+		// special case for null current
+		if (heap.get(parent)==null) return 0;
+		
+		// left& right child null
+		
+		if (left>heap.size()-1|| right>heap.size()-1) {
+			return j;
+		}
+		if (heap.get(left).getFinalPriority() < heap.get(parent).getFinalPriority()&&heap.get(right).getFinalPriority() < heap.get(parent).getFinalPriority())   //如果左边的小于parent，那么swap，就一定要保持current最小
+		{ 
+			if(heap.get(left).getFinalPriority()< heap.get(right).getFinalPriority()) {
+				swap(left,parent);
+				return downHeap(left);
+			}				
+			else {
+				swap(right,parent);
+				return downHeap(right);
+			}
+				
+		}
+		if (heap.get(left).getFinalPriority() < heap.get(parent).getFinalPriority())   //如果左边的小于parent，那么swap，就一定要保持current最小
+		{ 
+			swap(left,parent);
+			return downHeap(left);
+		}
+
+		// right child smaller than parent so swap
+		else if ( heap.get(right).getFinalPriority() < heap.get(parent).getFinalPriority()) 
+		{ 
+			swap(right,parent);
+			return downHeap(right);
+		}
+		// Children > parent Everything is okay
+		return parent;
+	}
+	
+	private int upHeap(int i) {
+		int parent = 0;  
+		if (i<=0 || i>=heap.size()) 
+			return 0;				
+		// if right child
+		else if (i%2 ==0) {
+			parent = (i-2)/2;
+		}
+		else {// left child
+			parent = (i-1)/2;
+		}
+		// parent > child so swap
+		if (heap.get(parent).getFinalPriority()>heap.get(i).getFinalPriority()) {
+			swap (parent,i);
+			return upHeap(parent);//然后bubbleup他的parent
+		}
+		// parent < child everything is okay
+		return i;
+	}
+
+	public void addToPQ(Job j, int entryTime) {//把一个jobadd到PQ里，只有pure的时候才能add，entrytime
+		if (j.isPure()) j.setEntryTime(entryTime);
+		// add value to end of
+		heap.add(j);//加在最后
+		// restore heap starting from insertion point
+		upHeap(heap.size()-1);//bubbleUp最后面一个
+		
+	}
+	
+	public Job removeMin() {	
+		// get value at head
+		Job temp = heap.get(0);
+		// put last value at root
+		heap.set(0, heap.remove(heap.size()-1));
+		downHeap(0);		
+		return temp;
+	}
+	
+	public int size() {
+		return heap.size();
+	}
+	
+	public void moveStarved() {
+		int indexOfOldest = 0;
+		int i=heap.size()-1; 
+		if (heap.get(i).isPure()) {
+			indexOfOldest = i;	
+			heap.get(indexOfOldest).setFinalPriority(1);
+			this.upHeap(i);
+			this.priorityChanges++;
+		}
+		else
+			return;
+	/*	while(i>=0 ) {
+			if (heap.get(i).isPure()) {
+				oldestTime = heap.get(i).getEntryTime();
+				indexOfOldest = i;
+			}
+			i--;
+		}  
+		// there is a pure index set priority to 1
+		if (indexOfOldest>=0) {
+			heap.get(indexOfOldest).setFinalPriority(1);
+			this.upHeap(i);
+			this.priorityChanges++;
+		}
+		return ;*/
+	}
+	
+	
+	public int getPriorityChanges() {
+		return priorityChanges;
+	}
+}

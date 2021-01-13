@@ -1,0 +1,156 @@
+Binary Version
+
+Please enter the a non-negative value to find its Oddnacci sequence: 5
+The Oddnacci value for n=5 is:5.
+The method has been called 7 times.
+Running time is 1367 ms
+
+Please enter the a non-negative value to find its Oddnacci sequence: 10
+The Oddnacci value for n=10 is:105.
+The method has been called 157 times.
+Running time is 1846 ms
+
+Please enter the a non-negative value to find its Oddnacci sequence: 15
+The Oddnacci value for n=15 is:2209.
+The method has been called 3313 times.
+Running time is 1426 ms
+
+Please enter the a non-negative value to find its Oddnacci sequence: 20
+The Oddnacci value for n=20 is:46499.
+The method has been called 69748 times.
+Running time is 1472 ms
+
+Please enter the a non-negative value to find its Oddnacci sequence: 25
+The Oddnacci value for n=25 is:978793.
+The method has been called 1468189 times.
+Running time is 1803 ms
+
+Please enter the a non-negative value to find its Oddnacci sequence: 30
+The Oddnacci value for n=30 is:20603361.
+The method has been called 30905041 times.
+Running time is 1801 ms
+
+Please enter the a non-negative value to find its Oddnacci sequence: 35
+The Oddnacci value for n=35 is:433695873.
+The method has been called 650543809 times.
+Running time is 2529 ms
+
+Please enter the a non-negative value to find its Oddnacci sequence: 40
+The Oddnacci value for n=40 is:539260895.
+The method has been called 808891342 times.
+Running time is 25651 ms
+
+Please enter the a non-negative value to find its Oddnacci sequence: 45
+The Oddnacci value for n=45 is:-1106123859.
+The method has been called 488297859 times.
+Running time is 492658 ms
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Linear Version
+Please enter the a non-negative value to find its Oddnacci sequence: 5
+The Oddnacci value for n=5 is:5.
+The method has been called 5 times.
+Running time is 1702 ms
+
+Please enter the a non-negative value to find its Oddnacci sequence: 10
+The Oddnacci value for n=10 is:105.
+The method has been called 10 times.
+Running time is 3260 ms
+
+
+Please enter the a non-negative value to find its Oddnacci sequence: 15
+The Oddnacci value for n=15 is:2209.
+The method has been called 15 times.
+Running time is 1197 ms
+
+Please enter the a non-negative value to find its Oddnacci sequence: 20
+The Oddnacci value for n=20 is:46499.
+The method has been called 20 times.
+Running time is 2518 ms
+
+Please enter the a non-negative value to find its Oddnacci sequence: 25
+The Oddnacci value for n=25 is:978793.
+The method has been called 25 times.
+Running time is 1505 ms
+
+Please enter the a non-negative value to find its Oddnacci sequence: 30
+The Oddnacci value for n=30 is:20603361.
+The method has been called 30 times.
+Running time is 2128 ms
+
+Please enter the a non-negative value to find its Oddnacci sequence: 35
+The Oddnacci value for n=35 is:433695873.
+The method has been called 35 times.
+Running time is 2081 ms
+
+
+Please enter the a non-negative value to find its Oddnacci sequence: 40
+The Oddnacci value for n=40 is:539260895.
+The method has been called 40 times.
+Running time is 2143 ms
+
+
+Please enter the a non-negative value to find its Oddnacci sequence: 45
+The Oddnacci value for n=45 is:-1106123859.
+The method has been called 45 times.
+Running time is 1564 ms
+
+Please enter the a non-negative value to find its Oddnacci sequence: 50
+The Oddnacci value for n=50 is:-780807791.
+The method has been called 50 times.
+Running time is 1573 ms
+
+Please enter the a non-negative value to find its Oddnacci sequence: 55
+The Oddnacci value for n=55 is:216042609.
+The method has been called 55 times.
+Running time is 1491 ms
+
+Please enter the a non-negative value to find its Oddnacci sequence: 60
+The Oddnacci value for n=60 is:-1645004157.
+The method has been called 60 times.
+Running time is 2008 ms
+
+Please enter the a non-negative value to find its Oddnacci sequence: 65
+The Oddnacci value for n=65 is:-750114111.
+The method has been called 65 times.
+Running time is 7054 ms
+
+
+Please enter the a non-negative value to find its Oddnacci sequence: 70
+The Oddnacci value for n=70 is:-1488695.
+The method has been called 70 times.
+Running time is 3494 ms
+
+
+Please enter the a non-negative value to find its Oddnacci sequence: 75
+The Oddnacci value for n=75 is:1868586433.
+The method has been called 75 times.
+Running time is 2842 ms
+Please enter the a non-negative value to find its Oddnacci sequence: 80
+The Oddnacci value for n=80 is:-165993377.
+The method has been called 80 times.
+Running time is 2178 ms
+
+Please enter the a non-negative value to find its Oddnacci sequence: 85
+The Oddnacci value for n=85 is:-1618763179.
+The method has been called 85 times.
+Running time is 1939 ms
+
+Please enter the a non-negative value to find its Oddnacci sequence: 90
+The Oddnacci value for n=90 is:2068304665.
+The method has been called 90 times.
+Running time is 1634 ms
+
+
+Please enter the a non-negative value to find its Oddnacci sequence: 95
+The Oddnacci value for n=95 is:-1300031551.
+The method has been called 95 times.
+Running time is 1724 ms
+
+
+Please enter the a non-negative value to find its Oddnacci sequence: 100
+The Oddnacci value for n=100 is:-1081317309.
+The method has been called 100 times.
+Running time is 1413 ms
+
+

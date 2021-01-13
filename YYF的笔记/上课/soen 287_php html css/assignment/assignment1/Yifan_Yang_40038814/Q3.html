@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang ="en">		
+	<head>									
+		<meta charset="utf-8">
+		<title>40038814_Yifan_Yang_Assignment1_Question3</title>
+	</head>
+
+	<body>
+		<h1>Yifan Yang's Apartment Search Form</h1>
+		<form>
+		    <fieldset>
+			<legend>Renter(s) Information</legend>
+			    How many people will live in the apartment?
+			    <input type="number" name="number"> 
+				<p>
+				Smoker? 
+				<label><input type="radio" name="smoker" value="yes" ></label> Yes
+				<label><input type="radio" name="smoker" value="no" ></label> No
+				</p>
+				<p>
+				Any pets?</br>
+				<label><input type="checkbox" name="pet" value="cat"></label>Cat(s)<br/>
+				<label><input type="checkbox" name="pet" value="dog"></label>Dog(s)<br/>
+				<label><input type="checkbox" name="pet" value="other"></label>Other Specify:<input type="text" name="pet" id="other"><br/>
+				<label><input type="checkbox" name="pet" value="none"></label>No Pets
+				</p>
+		    </fieldset>
+			<fieldset>
+			<legend>What are you looking for?</legend>
+			    Size of apartment:<br/>
+			    <label><input type="checkbox" name="size" value="studio"></label>Studio
+				<label><input type="checkbox" name="size" value="3.5"></label>3½
+				<label><input type="checkbox" name="size" value="4.5"></label>4½
+				<label><input type="checkbox" name="size" value="5.5"></label>5½
+				<label><input type="checkbox" name="size" value="5.5+"></label>More than 5½
+				<p>
+				Do you have preferred locations?<br/>
+				<label><input type="checkbox" name="location" value="westisland"></label>West Island
+				<label><input type="checkbox" name="location" value="downtown"></label>Downtown
+				<label><input type="checkbox" name="location" value="lowerwestmount"></label>Lower Westmount
+				<label><input type="checkbox" name="location" value="NDG"></label>NDG
+				<label><input type="checkbox" name="location" value="EastEndOfIsland"></label>East end of Island
+				<label><input type="checkbox" name="location" value="dontcare"></label>Don't Care
+				</p>
+				<label>Price Range/month:<br/>
+				    <select name="">
+					    <option value="500"><$500</option>
+						<option value="750">$500--$750</option>
+						<option value="1000">$750--$1000</option>
+						<option value="dontcare">No Price Limit</option>
+					</select>
+                </label>					
+				<p>Would be nice to have<br/>
+				<label><input type="checkbox" name="better" value="fp"></label>Fire Place
+				<label><input type="checkbox" name="better" value="Laundromat"></label>Laundromat in building
+				<label><input type="checkbox" name="better" value="indoor"></label>Indoor Parking
+				<label><input type="checkbox" name="better" value="outdoor"></label>Outdoor Parking
+				<label><input type="checkbox" name="better" value="balcony"></label>Balcony
+				</p>
+			</fieldset>
+			<p>Let's see what we can find...</p>
+			<P>
+			    <input type="submit" value="Search">
+			    <input type="reset" value="Start Over">
+			</P>
+			    
+		</form>
+	</body>
+</html>

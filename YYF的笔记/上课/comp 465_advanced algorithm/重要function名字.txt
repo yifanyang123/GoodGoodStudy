@@ -1,0 +1,10 @@
+Binary Search p7
+Merge-Sort 9, Merge 9
+quicks sort 11 
+partition 11
+ranomized quicksort 12
+MINIMUM 13
+RANDOMIZED-SELECT 14
+SELECT 16
+
+矩阵连乘18

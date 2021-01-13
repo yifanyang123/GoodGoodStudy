@@ -1,0 +1,38 @@
+SortedPQ
+
+Current system time (cycles): 3614
+Total number of jobs executed: 100 jobs
+Average process waiting time: 1848 cycles
+Total number of priority changes: 3
+Actual system time needed to execute all jobs: 248 ms
+__________________________________________________________________
+Current system time (cycles): 35069
+Total number of jobs executed: 1000 jobs
+Average process waiting time: 17895 cycles
+Total number of priority changes: 33
+Actual system time needed to execute all jobs: 855 ms
+________________________________________________________________
+Current system time (cycles): 363985
+Total number of jobs executed: 10000 jobs
+Average process waiting time: 183290 cycles
+Total number of priority changes: 327
+Actual system time needed to execute all jobs: 15637 ms
+
+ArrayHeapPQ
+Current system time (cycles): 3833
+Total number of jobs executed: 100 jobs
+Average process waiting time: 1872 cycles
+Total number of priority changes: 3
+Actual system time needed to execute all jobs: 113 ms
+________________________________________________________________
+Current system time (cycles): 36137
+Total number of jobs executed: 1000 jobs
+Average process waiting time: 18194 cycles
+Total number of priority changes: 30
+Actual system time needed to execute all jobs: 624 ms
+_____________________________________________________________
+Current system time (cycles): 360083
+Total number of jobs executed: 10000 jobs
+Average process waiting time: 181358 cycles
+Total number of priority changes: 313
+Actual system time needed to execute all jobs: 3306 ms

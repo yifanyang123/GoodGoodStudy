@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<!--
+// ------------------------------------------------------------------------------
+// Assignment 2
+// Written by: yifan yang 40038814
+// For SOEN 287 Section (your section) – Winter 2018
+// -----------------------------------------------------------------------------
+ -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script>
+        function stats(){
+            var inputString=prompt("Please enter your sentence to find vowels");
+            var inputWord=inputString.split(" ");
+            var vowel=["a","e","i","o","u","A","E","I","O","U"]
+            for(var i=0;i<inputWord.length;i++){
+                var vowelnumber=0;
+                var wordToUse=inputWord[i].split("")
+                for(var j=0;j<10;j++)
+                    for(var k=0;k<vowel.length;k++) {
+                        if (wordToUse[k] == vowel[j]) {
+                            vowelnumber++;
+                        }
+                    }
+                if(vowelnumber==1)
+                    document.write(inputWord[i]+" contains "+vowelnumber+" vowel "+"<br/>")
+                else
+                    document.write(inputWord[i]+" contains "+vowelnumber+" vowels "+"<br/>")
+
+            }
+        }
+    </script>
+    <title>Q4</title>
+</head>
+<body>
+    <script>
+        stats();
+    </script>
+</body>
+</html>

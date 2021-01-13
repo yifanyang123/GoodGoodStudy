@@ -1,0 +1,122 @@
+package assignment3mignong;
+
+public class JobArrayList {
+	
+	private Job a[];
+	private int last; // pointing at an empty spot. Range= { 1, N }
+	
+	public JobArrayList() {
+		a= new Job[2];
+		last =0;
+	}
+	
+	public Job get(int i) {
+		if (i> a.length) 
+		   return null;
+		return (Job) a[i];
+	}
+	
+	public Job set(int i, Job j){
+		if (i>= last)  //invalid index
+			return null;
+		Job temp = a[i];
+		a[i] = j;
+		return temp;
+	}
+	
+	public void resize(int i) {
+		Job temp[] = a;
+		int len = a.length;
+		if (i>0) {
+			a = new Job[(len+len)];
+		}
+		else {
+			len =len/2;
+			if (len<2) {
+				a = new Job[2];
+			}
+			else{
+				a = new Job[len];
+			}			
+		}
+		for (int j=0; j<last;j++) {
+			a[j] = temp[j];
+		}
+		 return;		
+	}
+	//add a job at a[last]
+	public boolean add(Job j, int cycleNum) {		
+		if (last== a.length) 
+			resize(1);// no free index
+		a[last] = j;
+		last++;		
+		j.setEntryTime(cycleNum);//©ирт╦д
+		return true;
+	}
+	//add a job at a[index you input]
+	public void add(int index, Job element) {
+		if (index>=last) 
+			return;//invalid input	
+		if (last== a.length) 
+			resize(1);
+		last++;
+		for (int i= last-1; i>=index; i--) {
+			a[i] = a[i-1];
+		}
+		a[index] = element;
+		return;		
+	}
+
+	
+	public void clear() {
+		last = 0;
+		a = new Job[2];
+	}
+	//remove the job j 
+	public boolean remove(Job j) {		
+		int i = 0;
+		while( i<last && !j.equals(a[i])) {
+			i++;
+		}
+		if (i>=last) 
+			return false;
+		last--;
+		for (; i<last; i++) {
+			a[i] = a[i+1];
+		}
+		if (last== a.length/2) resize(-1);
+		return true;
+	}
+
+	//remove by index
+	public Job remove(int index) {
+		if (index>=last|| index<0) 
+			return null;		
+		Job hold = a[index];
+		last--;
+		for (int i =index; i<last; i++) {
+			a[i] = a[i+1];
+		}
+		if (last== a.length/2) resize(-1);		
+		return hold;
+	}
+	
+	public String toString() {
+		if (last == 0) 
+			return "Empty List";
+		String s = "";
+		for (int i = 0; i<last; i++) {
+			s+= i+": "+a[i].toString()+" | ";
+		}
+		return s;
+	}
+	
+	public int size() {
+		return last;
+	}
+
+	public int getLast() {
+		return last;
+	}
+	
+}

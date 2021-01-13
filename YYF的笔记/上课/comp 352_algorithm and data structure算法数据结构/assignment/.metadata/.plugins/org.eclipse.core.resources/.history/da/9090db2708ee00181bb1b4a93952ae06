@@ -1,0 +1,10 @@
+package assignment3;
+
+import java.util.Comparator;
+
+public class JobComparator<E> implements Comparator<E> {
+	public int compare(E e1, E e2) throws ClassCastException {
+		return ((Comparable<E>)e1).compareTo(e2);
+	}
+	
+}

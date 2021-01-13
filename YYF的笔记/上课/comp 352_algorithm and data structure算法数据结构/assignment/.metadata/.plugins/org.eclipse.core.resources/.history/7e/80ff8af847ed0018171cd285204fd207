@@ -1,0 +1,125 @@
+package assignment3mignong;
+
+public class ArrayListHeapPriorityQueue {
+	private MyArrayList<Job> heap;
+	private int priorityChanges;
+	
+	public ArrayListHeapPriorityQueue() {
+		this.heap = new MyArrayList();
+		this.priorityChanges = 0;
+	}
+	
+	public String toString() {
+		return heap.toString();
+	}
+
+
+	private int heapify(int j) {//heapify会指定一个current值
+		int root = j;
+		int left = 2*j+1;
+		int right = 2*j+2;
+		// special case for null current
+		if (heap.get(root)==null) return 0;
+		
+		// left& right child null
+		
+		if (left>heap.size()-1|| right>heap.size()-1) {
+			return j;
+		}
+		// left child smaller than parent so swap
+		if (heap.get(left).getFinalPriority() < heap.get(root).getFinalPriority())   //如果左边的小于parent，那么swap，就一定要保持current最小
+		{ 
+			Job temp = heap.get(left);
+			temp.setFinalPriority(root);			
+			heap.set(left, heap.get(root));
+			heap.set(root, temp);
+			heap.get(root).setFinalPriority(left);
+			return heapify(left);
+		}
+
+		// right child smaller than parent so swap
+		else if ( heap.get(right).getFinalPriority() < heap.get(root).getFinalPriority()) 
+		{ 
+			Job temp = heap.get(right);
+			temp.setFinalPriority(root);			
+			heap.set(right, heap.get(root));
+			heap.set(root, temp);
+			heap.get(root).setFinalPriority(right);
+			return heapify(right);
+		}
+		// Children > parent Everything is okay
+		return root;
+	}
+	
+	private int bubbleUp(int current) {
+		// given index is out of range or root
+		if (current<=0 || current>=heap.size()) 
+			return 0;		
+		int parent = 0;
+		// if right child
+		if (current%2 ==0) {
+			parent = (current-2)/2;
+		}
+		else {// left child
+			parent = (current-1)/2;
+		}
+		// parent > child so swap
+		if (heap.get(parent).getFinalPriority()>heap.get(current).getFinalPriority()) {
+			Job temp = heap.get(parent);
+			temp.setFinalPriority(current);			
+			heap.set(parent, heap.get(current));
+			heap.set(current, temp);
+			heap.get(current).setFinalPriority(parent);		
+			// check next parent
+			return bubbleUp(parent);
+		}
+		// parent < child everything is okay
+		return current;
+	}
+
+	public void addToPQ(Job j, int entryTime) {
+		if (j.isPure()) j.setEntryTime(entryTime);
+		// add value to end of
+		heap.add(j);
+		// restore heap starting from insertion point
+		bubbleUp(heap.size()-1);
+		
+	}
+	
+	public Job removeMin() {	
+		// get value at head
+		Job hold = heap.get(0);
+		// put last value at root
+		heap.set(0, heap.remove(heap.size()-1));
+		heapify(0);		
+		return hold;
+	}
+	
+	public int size() {
+		return heap.size();
+	}
+	
+	public void moveStarved() {
+		int oldestTime = Integer.MAX_VALUE;
+		int indexOfOldest = 0;
+		int i=heap.size()-1; 
+		while(i>=0 ) {
+			if (heap.get(i).isPure() && heap.get(i).getEntryTime()<oldestTime ) {
+				oldestTime = heap.get(i).getEntryTime();
+				indexOfOldest = i;
+			}
+			i--;
+		}
+		// there is a pure index set priority to 1
+		if (indexOfOldest>=0) {
+			heap.get(indexOfOldest).setFinalPriority(1);
+			this.priorityChanges++;
+		}
+		return ;
+	}
+	
+	
+	public int getPriorityChanges() {
+		return priorityChanges;
+	}
+}

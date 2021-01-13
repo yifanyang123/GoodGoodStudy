@@ -1,0 +1,74 @@
+body {background-image:url(elephant.jpg);}
+
+.model {
+	     background-color:#EEEE00;
+		 padding:29px;
+		 border-color:#888888;
+		 border-width:10px;
+		 color:	#888888;
+		 border-style:solid;
+		 width:20%;
+		 margin:50px;
+       }
+.table {
+	     border-style:dotted;
+		 border-width:15px;
+		 border-color:yellow;
+	     margin:20px;		 
+       }
+.row1 {  
+         background-color:#5555FF ;
+		 color:white;
+	     margin:20px;
+         padding:10px;		 
+       }
+.a {
+	     background-color:#FFB3FF;
+		 padding:10px;
+		 border-color:#CC00FF;
+		 border-width:5px;
+		 border-style:solid;
+         width:150px;		 
+   }
+.b {
+	     background-color:#99FF99;
+		 padding:10px;
+		 border-color:#008800;
+		 border-width:5px;
+		 border-style:solid;
+         width:500px;		 
+   }
+.c {
+	     background-color:white;
+		 padding:10px;
+		 border-color:#5555FF;
+		 border-width:5px;
+		 border-style:solid;		 
+   }
+.d {
+	     background-color:#FFEE99;
+		 padding:10px;
+		 border-color:#EE7700;
+		 border-width:5px;
+		 border-style:solid;		 
+   }
+.list1{
+	    list-style-type:upper-roman;
+      }
+.list2{
+	    list-style-image:url("multi.jpg");
+      }
+.list3{
+	    list-style-type:circle;
+		color:#008800;
+      }
+.list4{
+	     list-style-type:armenian;
+      }
+.list5{
+	    list-style-image:url("green.jpg");
+      }
+.list6{
+	    list-style-type:sqaure;
+		color:#EE7700;
+      }

@@ -1,0 +1,57 @@
+package assignment3mignong;
+
+public class BinaryLinkedList {
+	private class Node {
+		private Job job;
+		private Node parent;
+		private Node left;
+		private Node right;
+
+		public Node(Job j, Node parent, Node left, Node right) {
+			this.job = j;
+			this.parent = parent;
+			this.left = left;
+			this.right = right;
+		}
+
+
+		public String toString() {
+			return left + " <= "+job.toString() + " => " + right;
+		}
+
+	}
+
+	private Node root;
+	private Node tail;
+	private int size;
+	private int height;
+
+	public BinaryLinkedList(){
+		tail=null;
+		root=null;
+		size=0;
+		height=-1;
+		
+	}
+	
+	public void add(Job j) {
+		if (size==0) {
+			root = new Node(j, null, null, null);
+			tail= root.left;
+			height++;
+		}
+		else {
+			
+		}
+		size++;
+		
+	}
+	
+	private Node findNextDeadKid(Node t) {
+		if (t==null) {
+			return t;
+		}
+		
+	}
+
+}

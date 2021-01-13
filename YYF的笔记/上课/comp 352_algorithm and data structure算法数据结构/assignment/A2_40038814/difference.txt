@@ -1,0 +1,3 @@
+everyremove is remove at end
+notail
+adjustSize in different way

@@ -1,0 +1,14 @@
+package assignment3mignong;
+
+import java.util.Comparator;
+
+public class JobComparator<E> implements Comparator<E> {
+	public int compare(E e1, E e2) throws ClassCastException {
+		return ((Comparable<E>)e1).compareTo(e2);
+	}
+
+	public int compare(Integer key, Integer key2) {
+		return key-key2;
+	}
+	
+}

@@ -1,0 +1,92 @@
+package assignment3mignong;
+
+public class PriorityQueueSimulatorTester {
+	public static void main(String[] args) {
+		int maxNumberOfJobs = 100;// upper limit
+		int totalWaitTime = 0;
+		Job[] jobsInputArray = new Job[maxNumberOfJobs];
+		for (int i =0; i< maxNumberOfJobs; i++) {
+			int jobLength = (int )(Math.random()*69 )+1; 
+			int jobPriority = (int )(Math.random()*39 )+1; 
+			jobsInputArray[i]= new Job((i+1), jobLength, jobPriority);
+		}
+		
+		ArrayListHeapPriorityQueue ALPQ = new ArrayListHeapPriorityQueue(); 
+		SortPriorityQueue SPQ = new SortPriorityQueue();
+		
+		
+		
+		long startTime=System.currentTimeMillis();
+		int cycleNum=0;//   这一步是为了把Inputarray加到pq里
+		for (int i=0; i<maxNumberOfJobs; i++) {
+	//		System.out.println(jobsInputArray[i]);
+			ALPQ.addToPQ(new Job (jobsInputArray[i]), cycleNum);
+			cycleNum++;//every add will add 1 cycle
+		}
+		
+		
+		// process PQ
+		Job processing=null;   
+		System.out.println(ALPQ);
+		
+		while( ALPQ.size()>0) {
+			if ((maxNumberOfJobs-ALPQ.size())%30==0) ALPQ.moveStarved();
+			processing = ALPQ.removeMin();
+			cycleNum++;
+			
+			//System.out.println(processing);
+			
+			if (processing.process()) {
+				// job is done
+				processing.terminateJob(cycleNum);
+				totalWaitTime += processing.getWaitTime();
+			}else {
+				ALPQ.addToPQ(processing, cycleNum);
+			}
+		}
+		
+		System.out.println(formatResults("ArrayList based Heap",cycleNum, maxNumberOfJobs, totalWaitTime, ALPQ.getPriorityChanges(), System.currentTimeMillis()-startTime));
+		
+		startTime=System.currentTimeMillis();
+		cycleNum=0;
+		for (int i=0; i<maxNumberOfJobs; i++) {
+	//		System.out.println(jobsInputArray[i]);
+			SPQ.addToPQ(  new Job (jobsInputArray[i]), cycleNum);
+			cycleNum++;
+		}
+		
+		
+		// process PQ
+		processing=null;
+		System.out.println("----------------------------------------------");
+	
+	//	System.out.println(SPQ);
+		
+		while( SPQ.size()>0) {
+			
+			if ((maxNumberOfJobs-SPQ.size())%30==0) SPQ.moveStarved();
+			
+			processing = SPQ.removeMin();
+			cycleNum++;
+			
+	//		System.out.println(processing);
+			boolean check = processing.process();
+			if (check) {
+				// job is done
+
+				processing.terminateJob(cycleNum);
+				totalWaitTime += processing.getWaitTime();
+			}
+			else {
+				SPQ.addToPQ(processing, cycleNum);
+			}
+		}
+		
+		System.out.println(formatResults("Sorted List ",cycleNum, maxNumberOfJobs, totalWaitTime, SPQ.getPriorityChanges(), System.currentTimeMillis()-startTime));
+	}
+	
+	
+	public static String formatResults(String typeOfPQ, int cycleNum,int numJobs,int totalWaitTime, int priorityChanges, long systemTime ) {
+		return typeOfPQ+" results:\nCurrent system Time "+cycleNum + " cycles\nJobs Executed: "+ numJobs+ "\nAverage Wait Time: "+ (totalWaitTime/numJobs)+ " cycles\nPriorityChanges: "+ priorityChanges+ "\nActual System Time for execution: "+ systemTime+" ms";
+	}
+}

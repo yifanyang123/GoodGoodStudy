@@ -1,0 +1,117 @@
+package assignment3;
+//the first half part is to test heap,the second part is used to test sorted list
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.PrintWriter;
+
+public class PQSimulatorTester {
+
+    public static void main(String[] args) {
+
+        long startTime;
+        long endTime;
+        long totalTime;
+        long priorityChanges = 0;
+        long averageWaitTime = 0;
+        long cycleCount = 0;
+        int n = 100;
+
+   /*     //Heap PQ Testing:
+            for (int i = 100; i <= n; i *= 10) {
+                Job[] jobs = new Job[i];
+                MyArrayHeap<Integer, Job> pq = new MyArrayHeap<>(new JobComparator());
+                for (int j = 0; j < jobs.length; j++) {
+                    jobs[j] = new Job();
+                }
+                Job.resetCounter();
+                startTime = System.currentTimeMillis();
+                for (int j = 0; j < i; j++) {
+                    pq.insert(jobs[j]);
+                    jobs[j].setEntryTime(j + 1);
+                }
+                while (!pq.isEmpty()) {
+                    Job j = (Job) pq.removeMin();
+                    j.setCurrentLength(j.getCurrentLength() - 1);
+                    cycleCount += 1;
+                    System.out.println(j);
+                    System.out.println();
+                    if (j.getCurrentLength() != 0) {
+                        j.setLastRun(cycleCount);
+                        pq.insert(j);
+
+                    } else {
+                        j.setEndTime(cycleCount);
+                        j.setWaitTime(j.getEndTime() - j.getJobLength() - j.getEntryTime());
+                        averageWaitTime += j.getWaitTime();
+                    }
+                }
+                averageWaitTime /= i;
+                endTime = System.currentTimeMillis();
+                totalTime = endTime - startTime;
+
+                System.out.println("Current system time (cycles): " + cycleCount);
+                System.out.println("Total number of jobs executed: " + i + " jobs");
+                System.out.println("Average process waiting time: " + averageWaitTime + " cycles");
+                System.out.println("Total number of priority changes: " + priorityChanges);
+                System.out.println("Actual system time needed to execute all jobs: " + totalTime + " ms");
+                System.out.println();
+
+                priorityChanges = 0;
+                averageWaitTime = 0;
+                cycleCount = 0;
+
+            }   */
+        
+
+
+        //sorted PQ Testing:
+
+           for (int i = 100; i <= n; i *= 10) {
+                Job[] jobs = new Job[i];
+                SortedPriorityQueue<Integer, Job> pqSorted = new SortedPriorityQueue<>(new Comparator());
+                for (int j = 0; j < jobs.length; j++) {
+                    jobs[j] = new Job();
+                }
+                Job.resetCounter();
+                startTime = System.currentTimeMillis();
+                for (int j = 0; j < i; j++) {
+                    pqSorted.insert(jobs[j]);
+                    jobs[j].setEntryTime(j + 1);
+                }
+                while (!pqSorted.isEmpty()) {
+                    Job j = (Job) pqSorted.removeMin();
+                    j.setCurrentLength(j.getCurrentLength() - 1);
+                    cycleCount += 1;
+                    System.out.println(j);
+                    System.out.println();
+                    if (j.getCurrentLength() != 0) {
+                        j.setLastRun(cycleCount);
+                        pqSorted.insert(j);
+
+                    } else {
+                        j.setEndTime(cycleCount);
+                        j.setWaitTime(j.getEndTime() - j.getJobLength() - j.getEntryTime());
+                        averageWaitTime += j.getWaitTime();
+                    }
+                }
+                averageWaitTime /= i;
+                endTime = System.currentTimeMillis();
+                totalTime = endTime - startTime;
+
+                System.out.println("Current system time (cycles): " + cycleCount);
+                System.out.println("Total number of jobs executed: " + i + " jobs");
+                System.out.println("Average process waiting time: " + averageWaitTime + " cycles");
+                System.out.println("Total number of priority changes: " + priorityChanges);
+                System.out.println("Actual system time needed to execute all jobs: " + totalTime + " ms");
+                System.out.println();
+
+                priorityChanges = 0;
+                averageWaitTime = 0;
+                cycleCount = 0;
+
+            }
+        } 
+          
+    }
+    

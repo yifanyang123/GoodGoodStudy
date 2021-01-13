@@ -1,0 +1,16 @@
+package assignment3mignong;
+
+import java.util.Comparator;
+
+public class JobComparator<Job> implements Comparator<Job> {
+	public int compare(Job j1, Job j2) throws ClassCastException {
+		return ((int) (j1.getKey()-( j2).getKey()));
+	}
+	
+}
+
+public static Comparator<Job> jobComparator = new Comparator<Job>(){
+    public int compare(Job c1, Job c2) {
+        return (int) (c1.getKey() - c2.getKey());
+    }
+};

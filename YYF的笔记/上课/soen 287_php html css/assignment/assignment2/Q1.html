@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<!--
+// ------------------------------------------------------------------------------
+// Assignment 2
+// Written by: yifan yang 40038814
+// For SOEN 287 Section (your section) – Winter 2018
+// -----------------------------------------------------------------------------
+ -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>atm withdraw</title>
+    <script type="text/javascript" src="validateAmount.js"></script>
+    <script type="text/javascript" src="withdrawAmount.js"></script>
+	<script>bankcharge=500;</script>
+</head>
+<body>    
+    <form name="Bank" onsubmit="valid();withdraw()">
+        <input type="text" name="withdrawMoney"  placeholder="Enter withdraw Amount">
+        <input type="submit" value="Submit" />
+    </form>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Q3</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <link rel="stylesheet" href="Q3.css" type="text/css">
+    <script src="Q3.js"></script>
+</head>
+<body>
+    <form name="q3" onsubmit="return test()">
+        <table  border="1">
+            <tr class="A">
+                <td><label >Input String:
+                    </label>
+                </td>
+                <td>
+                    <input type="text" id="inString" >
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Input Word:</label>
+                </td>
+                <td>
+                    <input type="text" id="inWord" >
+                </td>
+            </tr>
+            <tr class="A" >
+                <td colspan="2"><input type="submit" value="Plot Histogram" ></td>
+            </tr>
+        </table>
+    </form>
+    <div id="graph">
+    </div>
+
+
+</body>
+</html>

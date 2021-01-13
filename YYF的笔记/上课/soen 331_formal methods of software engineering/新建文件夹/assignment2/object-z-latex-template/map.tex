@@ -1,0 +1,131 @@
+\documentclass[12pt]{article}
+\usepackage[top=1in,bottom=1in,left=1in,right=1in]{geometry}
+\usepackage{alltt}
+\usepackage{array}	
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{verbatim}
+\usepackage{setspace}
+\usepackage{listings}
+\usepackage{amssymb,amsmath, amsthm}
+\usepackage{qtree}
+\usepackage{oz}
+\usepackage[cc]{titlepic}
+\usepackage{fancyvrb}
+
+
+\title{SOEN331: Introduction to Formal Methods\\for Software Engineering\\
+Assignment 2 on Object-Z specification}
+\author{Yifan Yang 40038814}
+\date{\today}
+
+\begin{document}
+\begin{spacing}{1.5}
+
+\maketitle
+
+\newpage
+
+
+\section{Type}
+\text{Basic Type:[Description; Coordinate]}\\
+\text{Composite Type:Point = Coordinate $ \times $ Coordinate}\\
+\text{Enumerated Type:Message::==$ ok \vert already\_exist|not\_exist$}
+
+
+\section{Map}
+
+\begin{class}{Map1}
+\also
+\upharpoonright (AddLocationOk, DeleteLocationOk, ModifyLocationOk,FindLocationOk) \\
+\begin{state}
+point :Description \pfun Point
+\where
+\end{state} \\
+\begin{init}
+point = \emptyset %\{ \}  
+\end{init} \\
+\begin{op}{AddLocationOk1}
+\Delta (point) \\
+description? : Description\\
+coordinate? : Coordinate\\
+\ST
+description? \notin dom~point \\
+point' = point \cup \{ description? \mapsto coordinate? \} \\
+\end{op}\\
+\begin{op}{DeleteLocationOk1}
+\Delta (point) \\
+description? : Description\\
+\ST
+description? \in dom~point\\
+point' = \{ description? \} \ndres point
+\end{op}\\
+\begin{op}{ModifyLocationOk1}
+\Delta (point) \\
+description? : Description\\
+newCoordinate? : Coordinate
+\ST
+description? \in dom~point \\
+point' = point \oplus \{ description? \mapsto newCoordinate? \}
+\end{op}\\
+\begin{op}{FindLocationOk1}
+\Xi (point) \\
+description? : Description\\
+coordinate! : Coordinate
+\ST
+description? \in dom~point \\
+coordinate! = point(description?)
+\end{op}\\
+\begin{op}{Success}
+result!:Message
+\ST
+result!=ok
+\end{op}\\
+\zbreak
+\begin{op}{alreadyExist}
+\Xi (point) \\
+description? : Description\\
+result! : Message
+\ST
+description? \in dom~point  \\
+result! =already\_exist
+\end{op}\\
+\begin{op}{notExist}
+\Xi (point) \\
+description? : Description\\
+result! : Message
+\ST
+description? \notin dom~point 
+\\
+result! =not\_exist
+\end{op}\\
+AddLocationOk \stackrel{\frown}{=} (AddLocationOk1 \wedge Success) \vee already\_exist \\
+DeleteLocationOk \stackrel{\frown}{=} (DeleteLocationOk1 \wedge Success) \vee not\_exist \\
+ModifyLocationOk \stackrel{\frown}{=} (ModifyLocationOk1 \wedge Success) \vee not\_exist \\
+FindLocationOk \stackrel{\frown}{=} (FindLocationOk1 \wedge Success) \vee not\_exist \\
+\end{class}
+\begin{class}{Map2}
+\also
+\upharpoonright (AddLocationOk, DeleteLocationOk, ModifyLocationOk,FindLocationOk) \\
+\text{Map1} \\
+\begin{state}
+count:\mathbb{N}
+\where
+count>=0
+\end{state} \\
+\begin{init}
+count=0
+\end{init} \\
+\begin{op}{AddLocationOk1}
+\Delta (point,count) \\
+\ST
+count'=count+1
+\end{op}\\
+\begin{op}{DeleteLocationOk1}
+\Delta (point,count) \\
+\ST
+count'=count-1
+\end{op}\\
+\end{class}
+\end{spacing}
+\end{document}

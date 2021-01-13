@@ -1,0 +1,10 @@
+package assignment3mignong;
+
+public class LLHeapPriorityQueue {
+	private MyLinBinakedList<Job> priorityQueue;
+
+	public LLHeapPriorityQueue() {
+		priorityQueue = new MyLinBinakedList() ;
+	}
+	
+}

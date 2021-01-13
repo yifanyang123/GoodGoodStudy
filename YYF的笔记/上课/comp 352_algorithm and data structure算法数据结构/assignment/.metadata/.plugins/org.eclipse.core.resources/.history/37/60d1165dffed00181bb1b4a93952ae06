@@ -1,0 +1,26 @@
+package assignment3mignong;
+
+import assignment2.MyArrayList;
+import assignment3.Entry;
+
+public class COMPARETEST<K,V> {
+  JobComparator a;
+  static Job j1=new Job(1,5,2);
+  static Job j2=new Job(1,10,6);
+
+  public  int compare(Entry<K,V> e1, Entry<K,V> e2) {
+      return a.compare(e1.getKey(), e2.getKey());
+  }
+  public static void main(String[] args) {
+	  COMPARETEST temp=new COMPARETEST();
+      if(temp.compare(j1,j2)>0)
+    	  System.out.println("true");
+
+		
+
+	}
+  
+  
+  
+}
+  

@@ -1,0 +1,64 @@
+\documentclass[12pt]{article}
+\usepackage[top=1in,bottom=1in,left=1in,right=1in]{geometry}
+\usepackage{alltt}
+\usepackage{array}	
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{verbatim}
+\usepackage{setspace}
+\usepackage{listings}
+\usepackage{amssymb,amsmath, amsthm}
+
+\title{SOEN331: Introduction to Formal Methods\\for Software Engineering\\
+Assignment 4 on algebraic specifications}
+\author{Yifan Yang:40038814}
+\date{\today}
+
+\begin{document}
+\begin{spacing}{1.5}
+
+\maketitle  
+\noindent \textbf Location\\
+\noindent \textbf{Spec}: Location;\\
+\noindent \textbf{Sort}: Loc;\\
+\noindent \textbf{Imports}: String, Point;\\
+\noindent \textbf{Operations}:\\
+\hspace*{5mm} newLocation : String $\times$ Point $\rightarrow$ Loc;\\
+\hspace*{5mm} setDescription : Loc $\times$  String $\rightarrow$ Loc ;\\
+\hspace*{5mm} getDescription : Loc $\rightarrow$ String;\\
+\hspace*{5mm} setPoint : Loc $\times$  Point $\rightarrow$ Loc ;\\
+\hspace*{5mm} getPoint :Loc $\rightarrow$ Point;\\
+\noindent \textbf{Variables}:\\
+\hspace*{5mm} d: String; p1,p2: Point; st:String\\
+\noindent \textbf{Axioms}:\\
+\hspace*{5mm} [A1] getDescription(newLocation(d,p1)) = d;\\
+\hspace*{5mm} [A2] getPoint(newLocation(d,p1)) = p1;\\
+\hspace*{5mm} [A3] setDescription(newLocation(d,p1),st) = newLocation(st,p1)   ;\\
+\hspace*{5mm} [A4] setPoint(newLocation(d,p1),p2) = neweLocation(d,p2);\\
+\\
+\maketitle  
+\noindent \textbf Map\\
+\noindent \textbf{Spec}: Map(Element);\\
+\noindent \textbf{Sort}: Map;\\
+\noindent \textbf{Imports}: String,Point,Boolean,Natural,Location;\\
+\noindent \textbf{Operations}:\\
+\hspace*{5mm} newMap $\rightarrow Map$;\\
+\hspace*{5mm} addLocation : Loc $\times$  Map $\rightarrow$ Map ;\\
+\hspace*{5mm} deleteLocation : String $\times$ Map $\rightarrow$ Map;\\
+\hspace*{5mm} containDescription : String $\times$  Map $\rightarrow$ Boolean ;\\
+\hspace*{5mm} containPoint :Point $\times$ Map $\rightarrow$ Boolean;\\
+\hspace*{5mm} findLocation :String $\times $ Map $\rightarrow$ Map;\\
+\hspace*{5mm} isEmpty :Map $\rightarrow$ Boolean;\\
+\hspace*{5mm} clear :Map $\rightarrow$ Map;\\
+
+\noindent \textbf{Variables}:\\
+\hspace*{5mm} m: Map; loc: Loc; d:String; p:Point el:Element\\
+\noindent \textbf{Axioms}:\\
+\hspace*{5mm} [A1] isEmpty(newMap)=true;\\
+\hspace*{5mm} [A2] clear(m)=newMap;\\
+\hspace*{5mm} [A6] isEmpty (deleteLocation (getDescription(loc), (addLocation (loc,newMap))) = true;\\
+\hspace*{5mm} [A8] findLocation(newMap)=undefined;\\
+\hspace*{5mm} [A9] deleteLocation(newMap)=undefined;\\
+
+\end{spacing}
+\end{document}
