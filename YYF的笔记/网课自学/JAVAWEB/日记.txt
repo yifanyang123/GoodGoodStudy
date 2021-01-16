@@ -1,0 +1,3 @@
+明天搞完JDBC, P37 到P44
+maven环境搭建，P5到P7  P28到P29
+然后开始mybatis
