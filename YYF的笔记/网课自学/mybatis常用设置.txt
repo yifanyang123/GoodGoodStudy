@@ -1,0 +1,162 @@
+最外层pom.xml
+==========
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.youngdog</groupId>
+    <artifactId>Mybatis-study</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>mybatis_01</module>
+        <module>mybatis-02</module>
+    </modules>
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+    </properties>
+
+    <dependencies>
+        <!--mysql驱动-->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.48</version>
+        </dependency>
+        <!--mybatis-->
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <version>3.5.3</version>
+        </dependency>
+        <!--jUnit-->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13</version>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*.properties</include>
+                    <include>**/*.xml</include>
+                </includes>
+                <filtering>true</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.properties</include>
+                    <include>**/*.xml</include>
+                </includes>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+
+    </build>
+</project>
+
+================================
+子项目结构
+src
+ ->main
+   ->java
+     ->com.xx.xx
+       ->dao //写接口以及对应xml配置文件
+       ->pojo //对应数据库字段写实体类
+       ->utils //得到sqlSession也就是JDBC的connector
+   ->resources 
+ ->test
+   ->java
+     ->com.xx.xx
+        ->XXTEST
+
+===================================
+utils:
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+
+import java.io.IOException;
+import java.io.InputStream;
+
+public class MybatisUtils {
+
+    private static SqlSessionFactory sqlSessionFactory;
+    static {
+
+        try {
+            String resource="mybatis-config.xml";
+            InputStream inputStream = Resources.getResourceAsStream(resource);
+            sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public static SqlSession getSqlSession(){
+        return sqlSessionFactory.openSession();
+    }
+}
+============
+UserMapper:
+import com.youngdog.pojo.User;
+
+import java.util.List;
+import java.util.Map;
+
+public interface UserMapper {
+     List<User> getUserList();
+     User getUserbyId(int id);
+     int insertUser(User user);
+     int insertUser2(Map<String,Object> map);
+     int updateUser(User user);
+     int deleteUser(int id);
+}
+========================
+UserMapper.xml:
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.youngdog.dao.UserMapper">
+    
+    <resultMap id="" type=""
+    
+    <select id="getUserList" resultType="com.youngdog.pojo.User">
+        select * from mybatis.user;
+    </select>
+    <select id="getUserbyId" parameterType="int" resultType="com.youngdog.pojo.User">
+        select * from mybatis.user where id =#{id}
+    </select>
+    <insert id="insertUser" parameterType="com.youngdog.pojo.User">
+        insert into mybatis.user (id,name,pwd) values (#{id},#{name},#{pwd})
+    </insert>
+    <insert id="insertUser2" parameterType="map">
+        insert into mybatis.user (id,name,pwd) values (#{userid},#{username},#{userpwd})
+    </insert>
+    <update id="updateUser" parameterType="com.youngdog.pojo.User">
+        update mybatis.user set name=#{name},pwd=#{pwd} where id=#{id};
+    </update>
+
+    <delete id="deleteUser" parameterType="int">
+        delete from mybatis.user where id=#{id};
+    </delete>
+</mapper>
+
+
+========
+mybatis-config.xml:
+
